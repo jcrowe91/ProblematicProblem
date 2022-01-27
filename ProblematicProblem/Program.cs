@@ -17,17 +17,13 @@ namespace ProblematicProblem
             string randomActivity = activities[randomNumber];
 
             Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ");
-            bool cont;
-            var contResponse = Console.ReadLine().ToLower();
+            bool cont = Console.ReadLine().ToLower() == "yes" ? true : false;
 
-            if (contResponse == "yes")
+            if (cont == false)
             {
-                cont = true;
+               Environment.Exit(0);
             }
-            else if (contResponse == "no")
-            {
-                Environment.Exit(0);
-            }
+           
 
             Console.WriteLine();
 
@@ -90,34 +86,37 @@ namespace ProblematicProblem
 
             }
 
-            
-            
 
 
-
-            Console.Write("Connecting to the database");
-
-            for (int i = 0; i < 10; i++)
+            while (cont == true)
             {
-                Console.Write(". ");
-                Thread.Sleep(500);
+
+
+
+
+                Console.Write("Connecting to the database");
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.Write(". ");
+                    Thread.Sleep(500);
+                }
+
+                Console.WriteLine();
+
+                Console.Write("Choosing your random activity");
+
+                for (int i = 0; i < 9; i++)
+                {
+                    Console.Write(". ");
+                    Thread.Sleep(500);
+                }
+
+                Console.WriteLine();
+                Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
+                Console.WriteLine();
+                cont = Console.ReadLine().ToLower() == "redo" ? true : false;
             }
-
-            Console.WriteLine();
-
-            Console.Write("Choosing your random activity");
-
-            for (int i = 0; i < 9; i++)
-            {
-               Console.Write(". ");
-               Thread.Sleep(500);
-            }
-
-            Console.WriteLine();
-            Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
-            Console.WriteLine();
-            cont = Console.ReadLine().ToLower() == "redo" ? true : false;
-            
         }
 
     }
